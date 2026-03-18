@@ -3,7 +3,7 @@ import { useState } from "react";
 function Todo() {
   const [todolist, setTodolist] = useState([]);
   const [type, setType] = useState("");
-
+  const [color, setChangecolor] = useState("#333");
   {
     /**ADD TODO FUNCTION  */
   }
@@ -13,6 +13,9 @@ function Todo() {
     setType("");
   }
 
+  function completed() {
+    setChangecolor("#910808");
+  }
   return (
     <>
       <div className="todo-container">
@@ -32,8 +35,28 @@ function Todo() {
         {/** THE TODOLIST CONTAINER **/}
         {todolist.map((list) => {
           return (
-            <ul>
-              <li>{list}</li>
+            <ul
+              style={{
+                display: "flex",
+                justifyContent: "space-around",
+                alignItems: "center",
+              }}
+            >
+              <li
+                className="lis"
+                value={color}
+                style={{
+                  listStyle: "none",
+                  background: "#110fa149",
+                  padding: "8px 5px",
+                  borderRadius: "6px",
+                  width: "370px",
+                  wordWrap: "wrap",
+                }}
+              >
+                {list}
+              </li>
+              <button onClick={completed}>completed</button>
             </ul>
           );
         })}
